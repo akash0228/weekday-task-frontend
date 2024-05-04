@@ -1,4 +1,3 @@
-export const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
 export const OfficeRonsite = ["Remote", "OnSite"];
 export const Rolesoptions = ["ios", "backend", "android"];
 export const MinBasePay = ["0", "10", "20", "30", "40", "50", "60", "70"];

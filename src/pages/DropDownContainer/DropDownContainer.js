@@ -11,10 +11,31 @@ import {
 } from "../../constant";
 
 const ContainerDropDOwn = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedRole, setSelectedRole] = useState([]);
+  const [selectedEmploye, setselectedEmploye] = useState([]);
+  const [selectedMinExp, setselectedMinExp] = useState(null);
+  const [selectedRemote, setselectedRemote] = useState([]);
+  const [selectedminBaseP, setselectedminBaseP] = useState(null);
 
-  const handleOptionChange = (newOptions) => {
-    setSelectedOptions(newOptions);
+  const handleMinExp = (newOptions) => {
+    setselectedMinExp(newOptions);
+    console.log(newOptions);
+  };
+  const handleRoleChange = (newOptions) => {
+    setSelectedRole(newOptions);
+    console.log(newOptions);
+  };
+
+  const handleEmployeChange = (newOptions) => {
+    setselectedEmploye(newOptions);
+    console.log(newOptions);
+  };
+  const handleRemote = (newOptions) => {
+    setselectedRemote(newOptions);
+    console.log(newOptions);
+  };
+  const handleBasePay = (newOptions) => {
+    setselectedminBaseP(newOptions);
     console.log(newOptions);
   };
 
@@ -22,8 +43,8 @@ const ContainerDropDOwn = () => {
     <div className="dropdown_style">
       <MultiSelectDropdown
         options={Rolesoptions}
-        value={selectedOptions}
-        onChange={handleOptionChange}
+        value={selectedRole}
+        onChange={handleRoleChange}
         height="40px"
         width="120px"
         placeholderText="Roles"
@@ -31,8 +52,8 @@ const ContainerDropDOwn = () => {
       />
       <MultiSelectDropdown
         options={EmployeRangeOptions}
-        value={selectedOptions}
-        onChange={handleOptionChange}
+        value={selectedEmploye}
+        onChange={handleEmployeChange}
         height="40px"
         width="200px"
         placeholderText="Number of Employees"
@@ -40,8 +61,8 @@ const ContainerDropDOwn = () => {
       />
       <MultiSelectDropdown
         options={MinExpOpt}
-        value={selectedOptions}
-        onChange={handleOptionChange}
+        value={selectedMinExp}
+        onChange={handleMinExp}
         height="40px"
         width="160px"
         placeholderText="Experiences"
@@ -49,8 +70,8 @@ const ContainerDropDOwn = () => {
       />
       <MultiSelectDropdown
         options={OfficeRonsite}
-        value={selectedOptions}
-        onChange={handleOptionChange}
+        value={selectedRemote}
+        onChange={handleRemote}
         width="140px"
         height="40px"
         placeholderText="Remote"
@@ -58,8 +79,8 @@ const ContainerDropDOwn = () => {
       />
       <MultiSelectDropdown
         options={MinBasePay}
-        value={selectedOptions}
-        onChange={handleOptionChange}
+        value={selectedminBaseP}
+        onChange={handleBasePay}
         height="40px"
         width="170px"
         isMulti={false}

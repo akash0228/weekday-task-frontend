@@ -7,7 +7,7 @@ import { getCompanys } from "../Redux/companySlice";
 const useInfiniteScroll = () => {
   const dispatch = useDispatch();
   const companyData = useSelector((state) => state.company.company);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(9);
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 

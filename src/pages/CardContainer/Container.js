@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 const Container = () => {
   const { isLoading } = useInfiniteScroll();
 
+  //companyData.filter((data) => dropdownArray.includes(data?.jobRole);
   const companyData = useSelector((state) => state.company.company);
 
   return (
