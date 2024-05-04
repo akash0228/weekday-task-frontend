@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import MultiSelectDropdown from "../../components/DropDown/DropDown";
 import "./dropdownstyle.css";
+import InputSearch from "../../components/InputSearch/InputSearch";
+import {
+  EmployeRangeOptions,
+  MinBasePay,
+  MinExpOpt,
+  OfficeRonsite,
+  Rolesoptions,
+} from "../../constant";
 
 const ContainerDropDOwn = () => {
-  const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
-  const OfficeRonsite = ["Remote", "OnSite"];
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOptionChange = (newOptions) => {
@@ -15,59 +21,53 @@ const ContainerDropDOwn = () => {
   return (
     <div className="dropdown_style">
       <MultiSelectDropdown
-        options={options}
+        options={Rolesoptions}
         value={selectedOptions}
         onChange={handleOptionChange}
         height="40px"
-        width="100px"
+        width="120px"
         placeholderText="Roles"
+        isMulti={true}
       />
       <MultiSelectDropdown
-        options={options}
+        options={EmployeRangeOptions}
         value={selectedOptions}
         onChange={handleOptionChange}
         height="40px"
         width="200px"
         placeholderText="Number of Employees"
+        isMulti={true}
       />
       <MultiSelectDropdown
-        options={options}
+        options={MinExpOpt}
         value={selectedOptions}
         onChange={handleOptionChange}
         height="40px"
-        width="100px"
+        width="160px"
         placeholderText="Experiences"
+        isMulti={false}
       />
       <MultiSelectDropdown
         options={OfficeRonsite}
         value={selectedOptions}
         onChange={handleOptionChange}
-        // height="40px"
-        width="100px"
-        placeholderText="Remote"
-      />
-      <MultiSelectDropdown
-        options={options}
-        value={selectedOptions}
-        onChange={handleOptionChange}
+        width="140px"
         height="40px"
-        width="120px"
-        placeholderText="Tech Stack"
+        placeholderText="Remote"
+        isMulti={true}
       />
       <MultiSelectDropdown
-        options={options}
+        options={MinBasePay}
         value={selectedOptions}
         onChange={handleOptionChange}
         height="40px"
         width="170px"
+        isMulti={false}
         placeholderText="Minimum Base Salary"
       />
-      <MultiSelectDropdown
-        options={options}
-        value={selectedOptions}
-        onChange={handleOptionChange}
-        height="40px"
-        width="180px"
+      <InputSearch
+        height="45px"
+        width="200px"
         placeholderText="Search Company Name"
       />
     </div>

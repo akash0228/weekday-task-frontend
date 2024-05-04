@@ -14,6 +14,7 @@ const MultiSelectDropdown = ({
   height,
   width,
   placeholderText,
+  isMulti,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState(value || []);
 
@@ -26,27 +27,53 @@ const MultiSelectDropdown = ({
     (option) => !selectedOptions.includes(option)
   );
 
-  return (
-    <Autocomplete
-      multiple
-      options={filteredOptions}
-      getOptionLabel={(option) => option}
-      value={selectedOptions}
-      onChange={handleChange}
-      renderInput={(params) => (
-        <SmallTextTextField
-          {...params}
-          placeholder={placeholderText}
-          style={{ height: height, minWidth: width }}
-        />
-      )}
-      renderOption={(props, option) => (
-        <Box component="li" {...props}>
-          {option}
-        </Box>
-      )}
-    />
-  );
+  if (isMulti) {
+    return (
+      <Autocomplete
+        multiple
+        options={filteredOptions}
+        getOptionLabel={(option) => option}
+        value={selectedOptions}
+        onChange={handleChange}
+        renderInput={(params) => (
+          <SmallTextTextField
+            {...params}
+            placeholder={placeholderText}
+            style={{ height: height, minWidth: width }}
+          />
+        )}
+        renderOption={(props, option) => (
+          <Box component="li" {...props}>
+            {option}
+          </Box>
+        )}
+      />
+    );
+  } else {
+    return (
+      <Autocomplete
+        options={filteredOptions}
+        getOptionLabel={(option) => option}
+        value={selectedOptions[0] || null}
+        onChange={(event, newValue) => {
+          setSelectedOptions(newValue ? [newValue] : []);
+          onChange(newValue);
+        }}
+        renderInput={(params) => (
+          <SmallTextTextField
+            {...params}
+            placeholder={placeholderText}
+            style={{ height: height, minWidth: width }}
+          />
+        )}
+        renderOption={(props, option) => (
+          <Box component="li" {...props}>
+            {option}
+          </Box>
+        )}
+      />
+    );
+  }
 };
 
 export default MultiSelectDropdown;

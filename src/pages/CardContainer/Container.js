@@ -18,9 +18,14 @@ const Container = () => {
         <ContainerDropDOwn />
       </div>
       <div className="card_container">
-        {companyData.map((data) => (
-          <JobCard key={data.id} Data={data} />
-        ))}
+        {companyData
+          .filter((data) =>
+            Object.values(data).every((value) => value !== null)
+          )
+          .map((data) => (
+            <JobCard key={data.id} Data={data} />
+          ))}
+
         {isLoading && <Loader />}
       </div>
     </>
