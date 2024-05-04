@@ -9,8 +9,12 @@ import {
   OfficeRonsite,
   Rolesoptions,
 } from "../../constant";
+import { useDispatch, useSelector } from "react-redux";
+import { setRole } from "../../Redux/companySlice";
 
 const ContainerDropDOwn = () => {
+  const dispatch = useDispatch();
+  const Role = useSelector((state) => state.company.role);
   const [selectedRole, setSelectedRole] = useState([]);
   const [selectedEmploye, setselectedEmploye] = useState([]);
   const [selectedMinExp, setselectedMinExp] = useState(null);
@@ -19,11 +23,12 @@ const ContainerDropDOwn = () => {
 
   const handleMinExp = (newOptions) => {
     setselectedMinExp(newOptions);
-    console.log(newOptions);
   };
   const handleRoleChange = (newOptions) => {
     setSelectedRole(newOptions);
-    console.log(newOptions);
+    const combinedArray = [...Role, ...newOptions];
+    const uniqueValues = Array.from(new Set(combinedArray));
+    dispatch(setRole(uniqueValues));
   };
 
   const handleEmployeChange = (newOptions) => {
