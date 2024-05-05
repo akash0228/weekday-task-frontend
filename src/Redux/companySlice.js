@@ -30,6 +30,7 @@ const companySlice = createSlice({
     minbaseSalary: null,
     minExp: null,
     searchCompany: null,
+    numberOfData:0,
   },
   reducers: {
     getRawJobs: (state, action) => {
@@ -37,26 +38,32 @@ const companySlice = createSlice({
         (job) => !Object.values(job).some((val) => val === null)
       );
       state.filteredJobs = applyFilters(state.rawJobs, state);
+      state.numberOfData=state.filteredJobs.length;
     },
     setRole: (state, action) => {
       state.role = action.payload;
       state.filteredJobs = applyFilters(state.rawJobs, state);
+      state.numberOfData=state.filteredJobs.length;
     },
     Onsiteremote: (state, action) => {
       state.OnsiteRemote = action.payload;
       state.filteredJobs = applyFilters(state.rawJobs, state);
+      state.numberOfData=state.filteredJobs.length;
     },
     SetminbaseSalary: (state, action) => {
       state.minbaseSalary = action.payload;
       state.filteredJobs = applyFilters(state.rawJobs, state);
+      state.numberOfData=state.filteredJobs.length;
     },
     SetMinExp: (state, action) => {
       state.minExp = action.payload;
       state.filteredJobs = applyFilters(state.rawJobs, state);
+      state.numberOfData=state.filteredJobs.length;
     },
     SearchCompany: (state, action) => {
       state.searchCompany = action.payload;
       state.filteredJobs = applyFilters(state.rawJobs, state);
+      state.numberOfData=state.filteredJobs.length;
     },
   },
 });

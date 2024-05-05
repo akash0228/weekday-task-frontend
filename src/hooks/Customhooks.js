@@ -10,6 +10,10 @@ const useInfiniteScroll = () => {
   const [limit, setLimit] = useState(9);
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const numberOfData = useSelector((state) => state.company.numberOfData);
+
+  console.log("Number of Data Are");
+  console.log(numberOfData);
 
   const fetchData = useCallback(async () => {
     try {
@@ -44,9 +48,14 @@ const useInfiniteScroll = () => {
       }
     };
 
+    if (numberOfData < 4) {
+      console.log(numberOfData);
+      fetchData();
+    }
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [companyData, isLoading, fetchData]);
+  }, [companyData, isLoading, fetchData, numberOfData]);
 
   useEffect(() => {
     fetchData();
